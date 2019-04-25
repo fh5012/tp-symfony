@@ -1,0 +1,36 @@
+
+<div class="products">
+{% if products %}
+<table class="table table-striped" id ="products">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price €</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+    {% for product in products %}
+      <th scope="row">{{product.id}}</th>
+      
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price }}</td>
+    <td><a class="btn btn-primary" href="product/edit/{{ product.id }}" role="button">Edit</a></td>    
+     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-id ="{{ product.id }}" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span>Delete</button></p></td>
+    </tr>
+     {% endfor %} 
+  </tbody>
+</table>
+{% else %}
+  <p>No product to display</p>
+  {% endif %}
+</div>
+
+{# {{ % block javascript % }} #}
+  <script src = "js/main.js"></script>
+{# {{ % endblock % }} #}
